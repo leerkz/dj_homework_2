@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Product Info</title>
-</head>
+{% extends 'base.html' %}
+{% block title %}Информация о продукте{% endblock %}
+{% block content %}
 <body>
     <h1> Информация о продукте</h1>
     <p>Имя: {{ product_name }}</p>
     <p>Описание: {{ product_description }}</p>
 
 </body>
-</html>
+
+{% endblock %}
