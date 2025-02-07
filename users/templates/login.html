@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}Регистрация{% endblock %}
+{% block title %}Войти{% endblock %}
 
 {% block content %}
 % include "catalog/header.html' %}
-<h2>Регистрация</h2>
+<h2>Войти</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

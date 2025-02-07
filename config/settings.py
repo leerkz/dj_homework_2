@@ -139,14 +139,15 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGIN_URL = 'users:login'
+LOGIN_REDIRECT_URL = 'catalog:home'
+LOGOUT_REDIRECT_URL = 'catalog:home'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = 'l3ra131007@gmail.com'
-EMAIL_HOST_PASSWORD = 'Lera13102007'
+EMAIL_HOST_USER = 'lerik131007@yandex.ru'
+EMAIL_HOST_PASSWORD = 'irweyocwxscxyxpy'
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
