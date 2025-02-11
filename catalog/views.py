@@ -9,7 +9,7 @@ from django.views.generic import ListView, DetailView, TemplateView, CreateView,
 from catalog.forms import ProductForm
 
 
-class ProductCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/product_form.html'
@@ -42,8 +42,15 @@ class ContactPageView(TemplateView):
 
 class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
-    template_name = 'product_info.html'
+    template_name = 'catalog/product_info.html'
     context_object_name = 'product'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        product = self.get_object()  # Получаем объект Product
+        context['product_name'] = product.name
+        context['product_description'] = product.description
+        return context
 
 
 class ProductListView(ListView):
