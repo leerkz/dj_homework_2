@@ -1,16 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Список студентов</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-</head>
+{% extends 'catalog/base.html' %}
+{% block title %}Информация о продукте{% endblock %}
+{% block content %}
 <body>
-    <div class="container mt-5">
-        {% for product in products}
-        {{ product}}
-        {% endfor%}
-    </div>
+<div class="container">
+    <div class="row text-center">
+        {% for product in object_list %}
+        <div class="col-3">
+            <div class="card mb-4 box-shadow">
+             <h1 class="card-title pricing-card-title">{{ product.name }}</h1>
+                            {% if perms.catalog.delete_product %}
+                            <a class="btn btn-primary" href="{% url 'catalog:product_update' product.pk %}" role="button">Удалить</a>
+                            {% endif %}
+                            {% if user == product.owner %}
+                            <a class="btn btn-primary" href="{% url 'catalog:product_update' product.pk %}" role="button">Редактировать для владельца</a>
+                            <a class="btn btn-primary" href="{% url 'catalog:product_update' product.pk %}" role="button">Удалить для владельца</a>
+                            {% endif %}
+
+                        </div>
+            </div>
+         {% endfor %}
+        </div>
+</div>
 </body>
-</html>
+
+{% endblock %}
