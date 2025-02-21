@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{% block title %}Страница блога{% endblock %}
+{% block content %}
+<body>
+    <h1>Информация о блоге</h1>
+    <p>Заголовок: {{ object.title }}</p>
+    <p>Содержимое: {{ object.content }}</p>
+    <p>Превью: <img src="/media/{{ object.preview }}" alt="{{ object.preview }}"></p>
+    <p>Дата создания: {{ object.created_at }}</p>
+    <p>Признак публикации: {{ object.is_published }}</p>
+    <p>Количество просмотров: {{ object.views_count }}</p>
+    <a class="btn btn-primary" href="{% url 'blog:blog_post_list' %}" role="button">Назад</a>
+
+</body>
+{% endblock %}
